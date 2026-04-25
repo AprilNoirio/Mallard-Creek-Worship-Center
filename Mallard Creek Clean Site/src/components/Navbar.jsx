@@ -3,8 +3,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 
 const navItems = [
   { label: 'Home', to: '/' },
-  { label: 'About', to: '/' },
-  { label: 'About Bishop Gore', to: '/about-bishop-billy-gore' },
+  { label: 'About Bishop Billy Gore', to: '/about-bishop-billy-gore' },
   { label: 'About General Overseer Gore', to: '/about-general-overseer-annette-gore' },
   { label: 'Service Times', to: '/service-times' },
   { label: 'Announcements', to: '/announcements' },
@@ -47,31 +46,14 @@ function Navbar() {
   return (
     <header className={`nav-shell ${isOpen ? 'nav-menu-open' : ''}`}>
       <div className="container">
-        <nav className="nav-bar glass-card" aria-label="Primary navigation">
-          <Link className="brand-link" to="/" onClick={closeMenu}>
+        <div className="nav-frame">
+          <Link className="nav-logo-link" to="/" onClick={closeMenu} aria-label="Go to home page">
             <LogoBadge />
-            <div className="brand-text">
-              <strong>Mallard Creek Worship Center</strong>
-            </div>
           </Link>
 
-          <button
-            className="nav-toggle"
-            type="button"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            onClick={() => setIsOpen((open) => !open)}
-          >
-            {isOpen ? 'Close' : 'Menu'}
-          </button>
-
-          <div className="nav-links" role="menubar">
-            {navItems.map((item) =>
-              item.label === 'About' ? (
-                <Link key={item.label} to={item.to} className="nav-link" onClick={closeMenu}>
-                  {item.label}
-                </Link>
-              ) : (
+          <nav className="nav-bar glass-card" aria-label="Primary navigation">
+            <div className="nav-links" role="menubar">
+              {navItems.map((item) => (
                 <NavLink
                   key={item.to}
                   to={item.to}
@@ -81,31 +63,35 @@ function Navbar() {
                 >
                   {item.label}
                 </NavLink>
-              )
-            )}
-          </div>
+              ))}
+            </div>
 
-          <div className="nav-actions">
-            <Link
-              className={`btn-secondary nav-cta-live ${location.pathname === '/live-streaming' ? 'current' : ''}`}
-              to="/live-streaming"
-              onClick={closeMenu}
+            <div className="nav-actions">
+              <Link
+                className={`btn-secondary nav-cta-live ${location.pathname === '/live-streaming' ? 'current' : ''}`}
+                to="/live-streaming"
+                onClick={closeMenu}
+              >
+                Watch Live
+              </Link>
+              <Link className="btn nav-cta-give" to="/giving" onClick={closeMenu}>
+                Give
+              </Link>
+            </div>
+
+            <button
+              className="nav-toggle"
+              type="button"
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen((open) => !open)}
             >
-              Watch Live
-            </Link>
-            <Link className="btn" to="/giving" onClick={closeMenu}>
-              Give
-            </Link>
-          </div>
+              {isOpen ? 'Close' : 'Menu'}
+            </button>
 
-          <div className="nav-mobile-panel">
-            <div className="nav-mobile-links">
-              {navItems.map((item) =>
-                item.label === 'About' ? (
-                  <Link key={item.label} to={item.to} className="nav-link nav-mobile-link" onClick={closeMenu}>
-                    {item.label}
-                  </Link>
-                ) : (
+            <div className="nav-mobile-panel">
+              <div className="nav-mobile-links">
+                {navItems.map((item) => (
                   <NavLink
                     key={item.to}
                     to={item.to}
@@ -115,11 +101,24 @@ function Navbar() {
                   >
                     {item.label}
                   </NavLink>
-                )
-              )}
+                ))}
+              </div>
+
+              <div className="nav-mobile-actions">
+                <Link
+                  className={`btn-secondary nav-cta-live ${location.pathname === '/live-streaming' ? 'current' : ''}`}
+                  to="/live-streaming"
+                  onClick={closeMenu}
+                >
+                  Watch Live
+                </Link>
+                <Link className="btn nav-cta-give" to="/giving" onClick={closeMenu}>
+                  Give
+                </Link>
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
     </header>
   );

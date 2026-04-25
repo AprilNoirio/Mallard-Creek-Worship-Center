@@ -1,4 +1,6 @@
 function ServiceTimes({ serviceSchedule }) {
+  const saturdayService = serviceSchedule.find((service) => service.name.includes('Saturday'));
+
   return (
     <>
       <section className="page-hero">
@@ -14,9 +16,24 @@ function ServiceTimes({ serviceSchedule }) {
       </section>
 
       <section className="section section-compact">
+        <div className="container">
+          <div className="service-highlight-bar glass-card fade-in-up">
+            <div>
+              <span className="eyebrow">Saturday Worship Service</span>
+              <h2 className="service-highlight-title">Join us every Saturday</h2>
+              <p className="section-copy">Service begins at {saturdayService?.time || '[Service Time]'}</p>
+            </div>
+            <p className="section-copy">
+              We would love to worship with you and welcome you into a warm church family atmosphere.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-compact">
         <div className="container grid grid-two">
           {serviceSchedule.map((service) => (
-            <article className="feature-card glass-card" key={service.name}>
+            <article className={`feature-card glass-card service-time-card fade-in-up ${service.name.includes('Saturday') ? 'primary' : ''}`} key={service.name}>
               <p className="card-kicker">{service.time}</p>
               <h2 className="card-title">{service.name}</h2>
               <p className="card-copy">{service.details}</p>

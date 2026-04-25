@@ -1,104 +1,115 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 function Home({ serviceSchedule }) {
-  const [logoMissing, setLogoMissing] = useState(false);
+  const saturdayService = serviceSchedule.find((service) => service.name.includes('Saturday'));
 
   return (
     <>
-      <section className="hero">
-        <div className="container hero-layout">
-          <div className="hero-panel glass-card hero-card">
-            <span className="eyebrow">Welcome Home</span>
-            <div className="hero-brand">
-              <div className="brand-mark">
-                {!logoMissing ? (
-                  <img
-                    src="/assets/mallard-creek-logo.png"
-                    alt="Mallard Creek Worship Center Logo"
-                    onError={() => setLogoMissing(true)}
-                  />
-                ) : (
-                  <div className="fallback-logo">MCWC</div>
-                )}
-              </div>
-              <div className="brand-stack">
-                <h2>Mallard Creek Worship Center</h2>
-                <p className="meta-copy">Elegant worship, healing presence, Kingdom purpose.</p>
-              </div>
+      <section className="service-highlight-strip fade-in-up">
+        <div className="container">
+          <div className="service-highlight-bar glass-card">
+            <div>
+              <span className="eyebrow">Saturday Worship Service</span>
+              <h2 className="service-highlight-title">Join us every Saturday</h2>
+              <p className="section-copy">
+                Service begins at {saturdayService?.time || '[Service Time]'}.
+              </p>
             </div>
-
-            <h1 className="hero-title">Welcome to Mallard Creek Worship Center</h1>
-            <p className="lead">
-              A place of worship, faith, healing, and transformation.
-            </p>
-
-            <div className="hero-actions">
-              <Link className="btn" to="/live-streaming">
-                Watch Live
+            <div className="btn-row">
+              <Link className="btn" to="/service-times">
+                View Service Times
               </Link>
               <Link className="btn-secondary" to="/contact">
                 Plan Your Visit
               </Link>
-              <Link className="btn-ghost" to="/giving">
-                Give Now
-              </Link>
-            </div>
-
-            <div className="stat-grid">
-              <div className="stat-card">
-                <span className="stat-value">Saturday</span>
-                <span className="meta-copy">Worship Service at 10:30 AM</span>
-              </div>
-              <div className="stat-card">
-                <span className="stat-value">Tuesday + Wednesday</span>
-                <span className="meta-copy">Prayer and Bible Study via conference call at 5:15 PM</span>
-              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="floating-verse glass-card">
-            <span className="eyebrow">Atmosphere of Faith</span>
-            <p className="verse-line">
-              "Where faith is strengthened, hearts are healed, and lives are transformed through the presence of God."
-            </p>
-            <p className="verse-ref">Join us in worship, fellowship, and spiritual growth.</p>
+      <section className="hero hero-homepage">
+        <div className="container">
+          <div className="hero-cinematic glass-card fade-in-up">
+            <div className="hero-cinematic-overlay" />
+            <div className="hero-cinematic-grid">
+              <div className="hero-cinematic-copy">
+                <span className="eyebrow">Welcome Home</span>
+                <h1 className="hero-title">Welcome to Mallard Creek Worship Center</h1>
+                <p className="lead">A place for worship, community, faith, and transformation.</p>
+
+                <div className="hero-actions">
+                  <Link className="btn" to="/live-streaming">
+                    Watch Live
+                  </Link>
+                  <Link className="btn-secondary" to="/contact">
+                    Plan Your Visit
+                  </Link>
+                  <Link className="btn-ghost" to="/giving">
+                    Give Now
+                  </Link>
+                </div>
+              </div>
+
+              <aside className="hero-side-card glass-card fade-in-up">
+                <span className="eyebrow">Join Us This Saturday</span>
+                <h2 className="section-title">A welcoming church family ready to worship with you</h2>
+                <p className="section-copy">
+                  Expect heartfelt worship, biblical teaching, prayer, and a loving spiritual community where every
+                  person is invited to grow in faith and connection.
+                </p>
+              </aside>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="section section-compact">
         <div className="container">
-          <div className="section-header">
+          <div className="section-header fade-in-up">
             <span className="eyebrow">Welcome Message</span>
-            <h2 className="section-title">A church rooted in worship and restoration</h2>
+            <h2 className="section-title">A church rooted in worship, warmth, and spiritual renewal</h2>
             <p className="section-copy">
-              Mallard Creek Worship Center exists to create space for heartfelt worship, faithful teaching, healing,
-              prayer, and Kingdom-centered community. Whether you are visiting for the first time or returning home,
-              you are welcome here.
+              Mallard Creek Worship Center is a place where faith is strengthened, worship is sincere, and every guest
+              is welcomed like family. Whether you are returning to church or visiting for the first time, there is a
+              place for you here.
             </p>
           </div>
+
           <div className="grid grid-three">
-            <article className="feature-card glass-card">
-              <p className="card-kicker">Faith</p>
-              <h3 className="card-title">Spirit-led worship</h3>
+            <article className="feature-card glass-card fade-in-up">
+              <p className="card-kicker">Saturday Service Highlight</p>
+              <h3 className="card-title">Join us every Saturday</h3>
               <p className="card-copy">
-                Gather in an atmosphere designed for reverence, praise, and life-changing encounters with God.
+                Saturday Worship Service begins at {saturdayService?.time || '[Service Time]'} in a spirit-filled
+                atmosphere of worship and encouragement.
               </p>
+              <Link className="btn-ghost" to="/service-times">
+                Saturday at {saturdayService?.time || '[Service Time]'}
+              </Link>
             </article>
-            <article className="feature-card glass-card">
-              <p className="card-kicker">Healing</p>
-              <h3 className="card-title">Prayer and encouragement</h3>
+
+            <article className="stream-card glass-card fade-in-up">
+              <p className="card-kicker">Watch Live Callout</p>
+              <h3 className="card-title">Worship with us from wherever you are</h3>
               <p className="card-copy">
-                Join intercessory prayer and receive ongoing encouragement through a ministry shaped by compassion.
+                Join the live broadcast, stay connected through Facebook, and worship with the church family beyond the
+                sanctuary.
               </p>
+              <Link className="btn-secondary" to="/live-streaming">
+                Open Watch Live
+              </Link>
             </article>
-            <article className="feature-card glass-card">
-              <p className="card-kicker">Transformation</p>
-              <h3 className="card-title">Kingdom growth</h3>
+
+            <article className="info-card glass-card fade-in-up">
+              <p className="card-kicker">Giving Callout</p>
+              <h3 className="card-title">Support the work of ministry</h3>
               <p className="card-copy">
-                Grow through Bible study, discipleship, and ministries that support the whole family.
+                Give securely to support worship, outreach, missions, and the continued work God is doing through this
+                church family.
               </p>
+              <Link className="btn" to="/giving">
+                Give Securely
+              </Link>
             </article>
           </div>
         </div>
@@ -106,87 +117,58 @@ function Home({ serviceSchedule }) {
 
       <section className="section section-compact">
         <div className="container split-layout">
-          <div className="split-panel glass-card">
-            <span className="eyebrow">Service Times Preview</span>
-            <h2 className="section-title">Worship and study throughout the week</h2>
+          <div className="split-panel glass-card fade-in-up">
+            <span className="eyebrow">Ministries Preview</span>
+            <h2 className="section-title">Ministries that strengthen every generation</h2>
+            <p className="section-copy">
+              From worship and prayer to women’s ministry, family support, and discipleship, our ministries are shaped
+              to help people grow in grace, healing, and purpose.
+            </p>
+            <div className="grid grid-two">
+              <div className="stat-card">
+                <span className="stat-value">Prayer</span>
+                <span className="meta-copy">A church committed to intercession and spiritual covering.</span>
+              </div>
+              <div className="stat-card">
+                <span className="stat-value">Discipleship</span>
+                <span className="meta-copy">Teaching environments that deepen faith and biblical understanding.</span>
+              </div>
+            </div>
+            <div className="split-actions">
+              <Link className="btn" to="/ministries">
+                Explore Ministries
+              </Link>
+            </div>
+          </div>
+
+          <div className="split-panel glass-card fade-in-up">
+            <span className="eyebrow">Plan Your Visit</span>
+            <h2 className="section-title">We would love to welcome you in person</h2>
+            <p className="section-copy">
+              Join us in Charlotte, North Carolina for worship, fellowship, and a warm church family atmosphere built
+              on faith and compassion.
+            </p>
             <ul className="list-clean">
-              {serviceSchedule.map((service) => (
-                <li key={service.name} className="schedule-item">
-                  <div>
-                    <strong>{service.name}</strong>
-                    <span className="meta-copy">{service.details}</span>
-                    {service.phone ? (
-                      <span className="meta-copy">
-                        {service.phone} | Access Code: {service.accessCode}
-                      </span>
-                    ) : null}
-                  </div>
-                  <span className="gold-text">{service.time}</span>
-                </li>
-              ))}
+              <li className="schedule-item">
+                <div>
+                  <strong>Saturday Worship Service</strong>
+                  <span className="meta-copy">Join us every Saturday for worship and the Word.</span>
+                </div>
+                <span className="gold-text">{saturdayService?.time || '[Service Time]'}</span>
+              </li>
+              <li className="schedule-item">
+                <div>
+                  <strong>Address</strong>
+                  <span className="meta-copy">121 Lawrence Gray Road, Charlotte, NC 28262</span>
+                </div>
+              </li>
             </ul>
             <div className="split-actions">
-              <Link className="btn" to="/service-times">
-                View Full Schedule
+              <Link className="btn-secondary" to="/contact">
+                Plan Your Visit
               </Link>
             </div>
           </div>
-
-          <div className="split-panel glass-card">
-            <span className="eyebrow">Announcements Preview</span>
-            <h2 className="section-title">Stay connected to what is ahead</h2>
-            <p className="section-copy">
-              Explore upcoming conferences, church updates, and opportunities to gather in faith and fellowship.
-            </p>
-            <article className="announcement-card glass-card">
-              <p className="card-kicker">Featured Event</p>
-              <h3 className="card-title">PURE Empowerment Network Conference 2026</h3>
-              <p className="card-copy">July 24-26, 2026 | Chattanooga, Tennessee</p>
-            </article>
-            <div className="split-actions">
-              <Link className="btn-secondary" to="/announcements">
-                See Announcements
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-compact">
-        <div className="container grid grid-three">
-          <article className="ministry-card glass-card">
-            <p className="card-kicker">Ministries Preview</p>
-            <h3 className="card-title">Serve every generation</h3>
-            <p className="card-copy">
-              Ministries are designed to strengthen families, uplift women, develop leaders, and foster prayerful
-              community.
-            </p>
-            <Link className="btn-ghost" to="/ministries">
-              Explore Ministries
-            </Link>
-          </article>
-
-          <article className="stream-card glass-card">
-            <p className="card-kicker">Live Stream Preview</p>
-            <h3 className="card-title">Worship from anywhere</h3>
-            <p className="card-copy">
-              Join the live stream through our YouTube channel and stay connected to the Word wherever you are.
-            </p>
-            <Link className="btn-secondary" to="/live-streaming">
-              Open Live Stream
-            </Link>
-          </article>
-
-          <article className="info-card glass-card">
-            <p className="card-kicker">Contact CTA</p>
-            <h3 className="card-title">Plan your visit</h3>
-            <p className="card-copy">
-              We would love to welcome you in person at Mallard Creek Worship Center in Charlotte, North Carolina.
-            </p>
-            <Link className="btn" to="/contact">
-              Contact Us
-            </Link>
-          </article>
         </div>
       </section>
     </>

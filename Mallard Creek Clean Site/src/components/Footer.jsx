@@ -20,10 +20,22 @@ function FooterLogo() {
 }
 
 function Footer({ serviceSchedule }) {
+  const saturdayService = serviceSchedule.find((service) => service.name.includes('Saturday'));
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-card glass-card">
+          <div className="footer-invite-banner">
+            <div>
+              <span className="eyebrow">Join Us Saturday</span>
+              <h3 className="card-title">Saturday Worship Service</h3>
+              <p className="meta-copy">Service begins at {saturdayService?.time || '[Service Time]'}</p>
+            </div>
+            <Link className="btn-secondary" to="/service-times">
+              Plan Your Visit
+            </Link>
+          </div>
           <div className="footer-grid">
             <div>
               <Link className="footer-logo" to="/">

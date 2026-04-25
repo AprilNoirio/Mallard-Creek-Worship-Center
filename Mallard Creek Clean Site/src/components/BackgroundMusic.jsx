@@ -212,36 +212,44 @@ function BackgroundMusic() {
       aria-label="Background worship music player"
     >
       {isMinimized ? (
-        <div className="mini-player">
-          <div className="mini-player-summary">
-            <span className="mini-player-icon" aria-hidden="true">
-              ♪
-            </span>
-            <div className="mini-player-text">
-              <strong>{activeTrack.title}</strong>
-              <span>{isPlaying ? 'Now Playing' : 'Paused'}</span>
+        <>
+          <div className="mini-player">
+            <div className="mini-player-summary">
+              <span className="mini-player-icon" aria-hidden="true">
+                ♪
+              </span>
+              <div className="mini-player-text">
+                <strong>{activeTrack.title}</strong>
+                <span>{isPlaying ? 'Now Playing' : 'Paused'}</span>
+              </div>
+            </div>
+            <div className="mini-player-actions">
+              {isPlaying ? (
+                <button className="nav-icon primary" type="button" onClick={pause} aria-label="Pause music">
+                  Pause
+                </button>
+              ) : (
+                <button className="nav-icon primary" type="button" onClick={play} aria-label="Play music">
+                  Play
+                </button>
+              )}
+              <button
+                className="nav-icon player-collapse-button"
+                type="button"
+                onClick={() => setIsMinimized(false)}
+                aria-label="Expand music player"
+              >
+                ^
+              </button>
             </div>
           </div>
-          <div className="mini-player-actions">
-            {isPlaying ? (
-              <button className="nav-icon primary" type="button" onClick={pause} aria-label="Pause music">
-                Pause
-              </button>
-            ) : (
-              <button className="nav-icon primary" type="button" onClick={play} aria-label="Play music">
-                Play
-              </button>
-            )}
-            <button
-              className="nav-icon player-collapse-button"
-              type="button"
-              onClick={() => setIsMinimized(false)}
-              aria-label="Expand music player"
-            >
-              ^
+
+          {showStartButton ? (
+            <button className="btn music-start music-start-compact" type="button" onClick={play}>
+              Tap to Start Worship Music
             </button>
-          </div>
-        </div>
+          ) : null}
+        </>
       ) : (
         <>
           <div className="player-head">
@@ -319,7 +327,7 @@ function BackgroundMusic() {
 
           {showStartButton ? (
             <button className="btn music-start" type="button" onClick={play}>
-              Start Worship Music
+              Tap to Start Worship Music
             </button>
           ) : null}
         </>
