@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { churchContact } from '../siteConfig';
 
 function FooterLogo() {
   const [broken, setBroken] = useState(false);
@@ -50,11 +51,14 @@ function Footer({ serviceSchedule }) {
             <div>
               <h3 className="card-title">Contact</h3>
               <div className="footer-links">
-                <span className="meta-copy">121 Lawrence Gray Road</span>
-                <span className="meta-copy">Charlotte, NC 28262</span>
+                <span className="meta-copy">{churchContact.addressLine1}</span>
+                <span className="meta-copy">{churchContact.addressLine2}</span>
+                <a className="meta-copy" href={churchContact.phoneHref}>
+                  {churchContact.phoneDisplay}
+                </a>
                 <a
                   className="btn-ghost"
-                  href="https://www.google.com/maps/search/?api=1&query=121+Lawrence+Gray+Road+Charlotte+NC+28262"
+                  href={churchContact.mapsHref}
                   target="_blank"
                   rel="noreferrer"
                 >

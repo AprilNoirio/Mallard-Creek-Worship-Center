@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { churchContact } from '../siteConfig';
 
 function Home({ serviceSchedule }) {
   const saturdayService = serviceSchedule.find((service) => service.name.includes('Saturday'));
@@ -156,7 +157,17 @@ function Home({ serviceSchedule }) {
               <li className="schedule-item">
                 <div>
                   <strong>Address</strong>
-                  <span className="meta-copy">121 Lawrence Gray Road, Charlotte, NC 28262</span>
+                  <span className="meta-copy">
+                    {churchContact.addressLine1}, {churchContact.addressLine2}
+                  </span>
+                </div>
+              </li>
+              <li className="schedule-item">
+                <div>
+                  <strong>Phone</strong>
+                  <a className="meta-copy" href={churchContact.phoneHref}>
+                    {churchContact.phoneDisplay}
+                  </a>
                 </div>
               </li>
             </ul>
