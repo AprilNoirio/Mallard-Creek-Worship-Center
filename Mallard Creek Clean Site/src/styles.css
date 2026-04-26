@@ -527,6 +527,38 @@ img {
   border: 0;
 }
 
+.stream-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.stream-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.stream-platform-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(24, 118, 242, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.stream-platform-badge.youtube {
+  background: rgba(255, 0, 0, 0.14);
+}
+
 .stream-player-shell {
   padding: 1rem;
   border-radius: calc(var(--radius-lg) + 4px);
@@ -539,6 +571,12 @@ img {
   background:
     radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 50%),
     rgba(17, 6, 35, 0.82);
+}
+
+.stream-embed-youtube {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 50%),
+    rgba(10, 8, 18, 0.92);
 }
 
 .stream-fallback,
@@ -568,10 +606,44 @@ img {
   gap: 1.5rem;
 }
 
+.giving-primary-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.givelify-button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.14);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.givelify-button-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.34);
+}
+
+.givelify-button-link img {
+  display: block;
+  width: min(320px, 100%);
+  height: auto;
+}
+
 .giving-categories {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.giving-category-card {
+  padding: 1.6rem;
 }
 
 .giving-pill {
@@ -579,6 +651,11 @@ img {
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.06);
+}
+
+.giving-thankyou {
+  padding: 2rem;
+  text-align: center;
 }
 
 .dashboard-grid {
@@ -1143,6 +1220,7 @@ img {
 
   .hero-cinematic-grid,
   .service-highlight-bar,
+  .stream-grid,
   .footer-invite-banner,
   .hero-layout,
   .split-layout,

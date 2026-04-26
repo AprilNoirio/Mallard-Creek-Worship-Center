@@ -44,13 +44,15 @@ function BackgroundMusic() {
   const audioRef = useRef(null);
   const saveTimerRef = useRef(null);
   const restoreStateRef = useRef(null);
+  const isMutedRef = useRef(false);
+  const requiresInteractionRef = useRef(false);
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.65);
   const [isMuted, setIsMuted] = useState(false);
-  const [showStartButton, setShowStartButton] = useState(false);
+  const [requiresInteraction, setRequiresInteraction] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
   const activeTrack = useMemo(() => playlist[trackIndex], [trackIndex]);
@@ -69,6 +71,7 @@ function BackgroundMusic() {
       saved && typeof saved.volume === 'number' && saved.volume >= 0 && saved.volume <= 1 ? saved.volume : 0.65;
     const initialMuted = Boolean(saved?.muted);
     const initialMinimized = Boolean(saved?.minimized);
+    const initialRequiresInteraction = Boolean(saved?.requiresInteraction);
 
     restoreStateRef.current = saved;
     audio.volume = initialVolume;
@@ -78,6 +81,7 @@ function BackgroundMusic() {
     setVolume(initialVolume);
     setIsMuted(initialMuted);
     setIsMinimized(initialMinimized);
+    setRequiresInteraction(initialRequiresInteraction);
 
     const onLoadedMetadata = () => {
       setDuration(audio.duration || 0);
@@ -97,7 +101,6 @@ function BackgroundMusic() {
 
     const onPlay = () => {
       setIsPlaying(true);
-      setShowStartButton(false);
     };
 
     const onPause = () => {
@@ -128,6 +131,14 @@ function BackgroundMusic() {
   }, []);
 
   useEffect(() => {
+    isMutedRef.current = isMuted;
+  }, [isMuted]);
+
+  useEffect(() => {
+    requiresInteractionRef.current = requiresInteraction;
+  }, [requiresInteraction]);
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -136,9 +147,16 @@ function BackgroundMusic() {
 
     const tryAutoplay = async () => {
       try {
+        audio.muted = isMutedRef.current || requiresInteractionRef.current;
         await audio.play();
       } catch {
-        setShowStartButton(true);
+        try {
+          audio.muted = true;
+          await audio.play();
+          setRequiresInteraction(true);
+        } catch {
+          setRequiresInteraction(true);
+        }
       }
     };
 
@@ -149,8 +167,8 @@ function BackgroundMusic() {
     const audio = audioRef.current;
     if (!audio) return;
     audio.volume = volume;
-    audio.muted = isMuted;
-  }, [volume, isMuted]);
+    audio.muted = isMuted || requiresInteraction;
+  }, [volume, isMuted, requiresInteraction]);
 
   useEffect(() => {
     if (saveTimerRef.current) {
@@ -167,7 +185,8 @@ function BackgroundMusic() {
           time: audio.currentTime,
           volume,
           muted: isMuted,
-          minimized: isMinimized
+          minimized: isMinimized,
+          requiresInteraction
         })
       );
     }, 1000);
@@ -177,16 +196,17 @@ function BackgroundMusic() {
         window.clearInterval(saveTimerRef.current);
       }
     };
-  }, [trackIndex, volume, isMuted, isMinimized]);
+  }, [trackIndex, volume, isMuted, isMinimized, requiresInteraction]);
 
   const play = async () => {
     const audio = audioRef.current;
     if (!audio) return;
     try {
+      setRequiresInteraction(false);
+      audio.muted = isMutedRef.current;
       await audio.play();
-      setShowStartButton(false);
     } catch {
-      setShowStartButton(true);
+      setRequiresInteraction(true);
     }
   };
 
@@ -244,7 +264,7 @@ function BackgroundMusic() {
             </div>
           </div>
 
-          {showStartButton ? (
+          {requiresInteraction ? (
             <button className="btn music-start music-start-compact" type="button" onClick={play}>
               Tap to Start Worship Music
             </button>
@@ -325,7 +345,7 @@ function BackgroundMusic() {
             />
           </div>
 
-          {showStartButton ? (
+          {requiresInteraction ? (
             <button className="btn music-start" type="button" onClick={play}>
               Tap to Start Worship Music
             </button>

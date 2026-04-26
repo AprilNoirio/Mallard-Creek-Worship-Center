@@ -49,7 +49,7 @@ function App() {
           <Route path="/service-times" element={<ServiceTimes serviceSchedule={serviceSchedule} />} />
           <Route path="/announcements" element={<Announcements />} />
           <Route path="/ministries" element={<Ministries />} />
-          <Route path="/live-streaming" element={<LiveStreaming />} />
+          <Route path="/live-streaming" element={<LiveStreaming serviceSchedule={serviceSchedule} />} />
           <Route path="/giving" element={<Giving />} />
           <Route path="/contact" element={<Contact serviceSchedule={serviceSchedule} />} />
         </Routes>
