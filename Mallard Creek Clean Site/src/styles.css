@@ -908,6 +908,25 @@ img {
   flex-shrink: 0;
 }
 
+.nav-brand-copy {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  color: var(--cream);
+}
+
+.nav-brand-copy strong {
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+.nav-brand-copy span {
+  color: var(--muted-copy);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .brand-logo {
   width: 78px;
   height: 78px;
@@ -1044,6 +1063,199 @@ img {
 
 .hero-homepage {
   padding-top: 3rem;
+}
+
+.hero-rebuild {
+  padding-bottom: 2rem;
+}
+
+.home-hero-stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  padding: 3.25rem;
+  background: linear-gradient(180deg, rgba(19, 10, 31, 0.96), rgba(12, 8, 22, 0.92));
+}
+
+.home-hero-background,
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.home-hero-background {
+  background:
+    linear-gradient(90deg, rgba(8, 4, 18, 0.88), rgba(8, 4, 18, 0.46) 52%, rgba(8, 4, 18, 0.8)),
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), transparent 22%),
+    url('/assets/mallard-creek-logo.png');
+  background-repeat: no-repeat;
+  background-size: auto, auto, 720px;
+  background-position: center, center, right -2rem center;
+  opacity: 0.9;
+}
+
+.home-hero-overlay {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(212, 175, 55, 0.14), transparent 16%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.home-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  gap: 1.75rem;
+  align-items: end;
+  min-height: 100%;
+}
+
+.home-hero-copy {
+  max-width: 720px;
+}
+
+.home-hero-copy .section-copy {
+  max-width: 34rem;
+}
+
+.home-hero-side {
+  align-self: center;
+}
+
+.hero-highlight-time {
+  margin: 0 0 1rem;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.hero-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.hero-stat-card {
+  padding: 1.15rem 1.25rem;
+}
+
+.hero-stat-card strong,
+.hero-stat-card a {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cream);
+}
+
+.stat-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-split-band {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.content-band,
+.giving-preview-band,
+.final-cta-panel,
+.page-hero-feature {
+  position: relative;
+  overflow: hidden;
+}
+
+.content-band {
+  padding: 2rem;
+}
+
+.content-band-dark {
+  background:
+    linear-gradient(180deg, rgba(20, 12, 34, 0.96), rgba(12, 9, 22, 0.92)),
+    radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 24%);
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.center-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.giving-preview-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+  gap: 1.5rem;
+  align-items: center;
+  padding: 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.13), transparent 24%),
+    linear-gradient(180deg, rgba(34, 20, 57, 0.96), rgba(19, 13, 31, 0.9));
+}
+
+.giving-preview-copy .section-copy {
+  max-width: 34rem;
+}
+
+.giving-preview-action {
+  display: flex;
+  justify-content: center;
+}
+
+.giving-pill-row,
+.profile-accent-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.profile-accent-row {
+  margin-bottom: 1.25rem;
+}
+
+.final-cta-panel {
+  padding: 2.35rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.13), transparent 20%),
+    linear-gradient(180deg, rgba(29, 18, 46, 0.96), rgba(14, 10, 25, 0.92));
+}
+
+.final-cta-panel .section-copy {
+  margin-inline: auto;
+}
+
+.page-hero-immersive {
+  padding-top: 7.2rem;
+}
+
+.page-hero-feature {
+  padding: 2.7rem;
+  background:
+    linear-gradient(180deg, rgba(21, 13, 34, 0.95), rgba(15, 10, 25, 0.9)),
+    radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent 24%);
+}
+
+.giving-feature-panel {
+  background:
+    linear-gradient(180deg, rgba(28, 18, 46, 0.95), rgba(18, 12, 31, 0.9)),
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.08), transparent 22%);
+}
+
+.service-highlight-major {
+  padding: 1.8rem 2rem;
 }
 
 .service-highlight-strip {
@@ -1378,6 +1590,10 @@ img {
 }
 
 @media (max-width: 1080px) {
+  .nav-brand-copy {
+    display: none;
+  }
+
   .nav-toggle {
     display: inline-flex;
   }
@@ -1415,6 +1631,10 @@ img {
   }
 
   .hero-cinematic-grid,
+  .home-hero-grid,
+  .hero-stat-strip,
+  .section-split-band,
+  .preview-grid,
   .service-highlight-bar,
   .stream-grid,
   .footer-invite-banner,
@@ -1422,6 +1642,7 @@ img {
   .split-layout,
   .profile-layout,
   .announcement-hero,
+  .giving-preview-band,
   .giving-layout,
   .contact-layout,
   .footer-grid {
@@ -1472,6 +1693,16 @@ img {
     padding: 2rem 0 3rem;
   }
 
+  .home-hero-stage {
+    padding: 1.6rem;
+    min-height: auto;
+  }
+
+  .home-hero-background {
+    background-size: auto, auto, 380px;
+    background-position: center, center, right -5rem top;
+  }
+
   .hero-panel,
   .hero-card,
   .split-panel,
@@ -1512,6 +1743,14 @@ img {
     min-height: auto;
   }
 
+  .page-hero-feature,
+  .content-band,
+  .giving-preview-band,
+  .final-cta-panel,
+  .service-highlight-major {
+    padding: 1.5rem;
+  }
+
   .hero-cinematic::before {
     background-size: auto, auto, 320px;
     background-position: center, center, bottom right;
@@ -1523,6 +1762,10 @@ img {
 
   .hero-side-card {
     padding: 1.4rem;
+  }
+
+  .hero-stat-strip {
+    margin-top: 1rem;
   }
 
   .lead,

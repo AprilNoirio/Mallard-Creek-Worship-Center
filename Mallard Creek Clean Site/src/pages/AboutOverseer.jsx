@@ -5,9 +5,9 @@ function AboutOverseer() {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-immersive">
         <div className="container">
-          <div className="page-hero-card glass-card">
+          <div className="page-hero-card glass-card page-hero-feature">
             <span className="eyebrow">General Overseer</span>
             <h1 className="page-title">General Overseer Annette Gore</h1>
             <p className="page-copy">A Legacy of Faith, Leadership, and Kingdom Building</p>
@@ -33,6 +33,11 @@ function AboutOverseer() {
           </div>
 
           <article className="profile-card glass-card fade-in-up">
+            <div className="profile-accent-row">
+              <span className="giving-pill">Faith</span>
+              <span className="giving-pill">Encouragement</span>
+              <span className="giving-pill">Women of Strength</span>
+            </div>
             <p className="section-copy">
               General Overseer Annette Gore was born on December 27th to Bishop Fred and Pastor Annie R. Thomas. She
               was educated in the Charlotte Mecklenburg School System, graduating from Garinger High School and

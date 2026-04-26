@@ -5,9 +5,9 @@ function AboutBishop() {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-immersive">
         <div className="container">
-          <div className="page-hero-card glass-card">
+          <div className="page-hero-card glass-card page-hero-feature">
             <span className="eyebrow">Leadership</span>
             <h1 className="page-title">Bishop Billy Gore</h1>
             <p className="page-copy">A Life of Leadership, Service, Wisdom, and Kingdom Building</p>
@@ -33,6 +33,11 @@ function AboutBishop() {
           </div>
 
           <article className="profile-card glass-card">
+            <div className="profile-accent-row">
+              <span className="giving-pill">Leadership</span>
+              <span className="giving-pill">Kingdom Building</span>
+              <span className="giving-pill">Wisdom</span>
+            </div>
             <p className="section-copy">
               Bishop Designate Billy Joe Gore was born in Loris, South Carolina, a small town in Horry County. After
               graduating from Finklea High School, he served in the United States Army and received an honorable

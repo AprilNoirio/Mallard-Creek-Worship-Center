@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { churchMedia } from '../siteConfig';
 
 const givingCategories = [
   {
@@ -17,7 +18,7 @@ const givingCategories = [
 
 function GivelifyButton() {
   return (
-    <a className="givelify-button-link" target="_blank" rel="noreferrer" href="https://giv.li/mw4v5c">
+    <a className="givelify-button-link" target="_blank" rel="noreferrer" href={churchMedia.givelifyUrl}>
       <img src="https://images.givelify.com/PrimaryGiveButton2xImg.png" alt="Givelify" />
     </a>
   );
@@ -28,9 +29,9 @@ function Giving() {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-immersive">
         <div className="container">
-          <div className="page-hero-card glass-card">
+          <div className="page-hero-card glass-card page-hero-feature">
             <span className="eyebrow">Faithful Giving</span>
             <h1 className="page-title">Give Now</h1>
             <p className="page-copy">
@@ -62,7 +63,7 @@ function Giving() {
 
       <section className="section section-compact">
         <div className="container giving-layout">
-          <article className="form-card glass-card fade-in-up">
+          <article className="form-card glass-card fade-in-up giving-feature-panel">
             <p className="card-kicker">Secure Giving Options</p>
             <h2 className="section-title">Give with confidence and clarity</h2>
             <p className="section-copy">
@@ -142,7 +143,7 @@ function Giving() {
 
       <section className="section section-compact">
         <div className="container">
-          <div className="giving-thankyou glass-card fade-in-up">
+          <div className="giving-thankyou glass-card fade-in-up final-cta-panel">
             <span className="eyebrow">Thank You</span>
             <h2 className="section-title">
               Thank you for sowing into the work of the ministry. Every gift makes a difference.

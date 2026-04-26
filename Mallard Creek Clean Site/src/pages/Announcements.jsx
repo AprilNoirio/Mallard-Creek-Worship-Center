@@ -5,9 +5,9 @@ function Announcements() {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-immersive">
         <div className="container">
-          <div className="page-hero-card glass-card">
+          <div className="page-hero-card glass-card page-hero-feature">
             <span className="eyebrow">Featured Event</span>
             <h1 className="page-title">Announcements</h1>
             <p className="page-copy">Stay informed about upcoming gatherings, conferences, and ministry moments.</p>
@@ -59,6 +59,27 @@ function Announcements() {
                 Book Hotel
               </a>
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="section section-compact">
+        <div className="container section-split-band">
+          <article className="feature-card glass-card fade-in-up">
+            <span className="eyebrow">Stay Connected</span>
+            <h2 className="section-title">Keep up with ministry gatherings and special moments</h2>
+            <p className="section-copy">
+              Check this page often for conferences, ministry announcements, worship gatherings, and special updates
+              from the church.
+            </p>
+          </article>
+
+          <article className="feature-card glass-card fade-in-up">
+            <span className="eyebrow">Need More Information?</span>
+            <h2 className="section-title">Reach out if you have questions about upcoming events</h2>
+            <p className="section-copy">
+              We would love to help you get connected and prepare for the next ministry opportunity.
+            </p>
           </article>
         </div>
       </section>

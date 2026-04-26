@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { churchMedia } from '../siteConfig';
 
-const FACEBOOK_PAGE_URL = 'https://www.facebook.com/MallardCreekWorshipCenter';
+const FACEBOOK_PAGE_URL = churchMedia.facebookUrl;
 // Facebook may require a specific public live video URL for direct playback in the embedded video player.
 // If a public live or replay video URL is available, place it here to prioritize the official embedded video player.
 const FACEBOOK_LIVE_VIDEO_URL = '';
 const FACEBOOK_PAGE_PLUGIN_URL =
   'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FMallardCreekWorshipCenter&tabs=timeline&width=1200&height=720&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false';
-const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/@MallardCreekWorshipCenter';
+const YOUTUBE_CHANNEL_URL = churchMedia.youtubeUrl;
 const YOUTUBE_CHANNEL_ID = 'UCHpMkz2j9Ri2buhH61UdxfQ';
 // If a specific YouTube live or latest sermon embed URL is preferred later, replace this value.
 const YOUTUBE_CUSTOM_EMBED_URL = '';
@@ -131,9 +132,9 @@ function LiveStreaming({ serviceSchedule }) {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-immersive">
         <div className="container">
-          <div className="page-hero-card glass-card">
+          <div className="page-hero-card glass-card page-hero-feature">
             <span className="eyebrow">Broadcast Worship</span>
             <h1 className="page-title">Watch Live</h1>
             <p className="page-copy">Join Mallard Creek Worship Center live online through Facebook or YouTube.</p>

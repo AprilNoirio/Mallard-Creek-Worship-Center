@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Ministries() {
   const ministries = [
     {
@@ -34,20 +36,49 @@ function Ministries() {
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-immersive">
         <div className="container">
-          <div className="page-hero-card glass-card">
+          <div className="page-hero-card glass-card page-hero-feature">
             <span className="eyebrow">Serve and Grow</span>
             <h1 className="page-title">Ministries</h1>
-            <p className="page-copy">Every ministry is designed to strengthen faith, restore hope, and build community.</p>
+            <p className="page-copy">
+              Every ministry is designed to strengthen faith, restore hope, and build Christ-centered community.
+            </p>
           </div>
+        </div>
+      </section>
+
+      <section className="section section-compact">
+        <div className="container section-split-band">
+          <article className="feature-card glass-card fade-in-up">
+            <span className="eyebrow">Why Ministries Matter</span>
+            <h2 className="section-title">Ministry moments that move people toward purpose</h2>
+            <p className="section-copy">
+              From intercession to discipleship, our ministries help people grow in faith, find support, and encounter
+              God in practical ways.
+            </p>
+          </article>
+
+          <article className="feature-card glass-card fade-in-up">
+            <span className="eyebrow">Get Connected</span>
+            <h2 className="section-title">There is room for every generation</h2>
+            <p className="section-copy">
+              Whether you are looking for prayer, teaching, leadership growth, or community, there is a ministry space
+              for you here.
+            </p>
+            <div className="btn-row">
+              <Link className="btn-secondary" to="/contact">
+                Contact the Church
+              </Link>
+            </div>
+          </article>
         </div>
       </section>
 
       <section className="section section-compact">
         <div className="container grid grid-three">
           {ministries.map((ministry) => (
-            <article className="ministry-card glass-card" key={ministry.title}>
+            <article className="ministry-card glass-card fade-in-up" key={ministry.title}>
               <p className="card-kicker">Ministry Focus</p>
               <h2 className="card-title">{ministry.title}</h2>
               <p className="card-copy">{ministry.description}</p>

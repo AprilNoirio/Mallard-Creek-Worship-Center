@@ -51,6 +51,11 @@ function Navbar() {
             <LogoBadge />
           </Link>
 
+          <Link className="nav-brand-copy" to="/" onClick={closeMenu}>
+            <strong>Mallard Creek Worship Center</strong>
+            <span>Worship. Faith. Healing. Transformation.</span>
+          </Link>
+
           <nav className="nav-bar glass-card" aria-label="Primary navigation">
             <div className="nav-links" role="menubar">
               {navItems.map((item) => (
