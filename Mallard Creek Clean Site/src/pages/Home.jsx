@@ -35,7 +35,7 @@ function Home({ serviceSchedule }) {
               <div className="hero-cinematic-copy">
                 <span className="eyebrow">Welcome Home</span>
                 <h1 className="hero-title">Welcome to Mallard Creek Worship Center</h1>
-                <p className="lead">A place for worship, community, faith, and transformation.</p>
+                <p className="lead">A place to worship, grow, heal, and encounter God.</p>
 
                 <div className="hero-actions">
                   <Link className="btn" to="/live-streaming">
@@ -54,8 +54,7 @@ function Home({ serviceSchedule }) {
                 <span className="eyebrow">Join Us This Saturday</span>
                 <h2 className="section-title">A welcoming church family ready to worship with you</h2>
                 <p className="section-copy">
-                  Expect heartfelt worship, biblical teaching, prayer, and a loving spiritual community where every
-                  person is invited to grow in faith and connection.
+                  Expect heartfelt worship, biblical teaching, prayer, and a warm church family ready to welcome you.
                 </p>
               </aside>
             </div>
@@ -70,8 +69,7 @@ function Home({ serviceSchedule }) {
             <h2 className="section-title">A church rooted in worship, warmth, and spiritual renewal</h2>
             <p className="section-copy">
               Mallard Creek Worship Center is a place where faith is strengthened, worship is sincere, and every guest
-              is welcomed like family. Whether you are returning to church or visiting for the first time, there is a
-              place for you here.
+              is welcomed like family.
             </p>
           </div>
 
@@ -80,8 +78,8 @@ function Home({ serviceSchedule }) {
               <p className="card-kicker">Saturday Service Highlight</p>
               <h3 className="card-title">Join us every Saturday</h3>
               <p className="card-copy">
-                Saturday Worship Service begins at {saturdayService?.time || '[Service Time]'} in a spirit-filled
-                atmosphere of worship and encouragement.
+                Saturday Worship Service begins at {saturdayService?.time || '[Service Time]'} with worship, the Word,
+                and encouragement for every generation.
               </p>
               <Link className="btn-ghost" to="/service-times">
                 Saturday at {saturdayService?.time || '[Service Time]'}
@@ -92,8 +90,8 @@ function Home({ serviceSchedule }) {
               <p className="card-kicker">Watch Live Callout</p>
               <h3 className="card-title">Worship with us from wherever you are</h3>
               <p className="card-copy">
-                Join the live broadcast, stay connected through Facebook, and worship with the church family beyond the
-                sanctuary.
+                Join the live broadcast, stay connected through Facebook and YouTube, and worship with us from
+                anywhere.
               </p>
               <Link className="btn-secondary" to="/live-streaming">
                 Open Watch Live
@@ -104,8 +102,8 @@ function Home({ serviceSchedule }) {
               <p className="card-kicker">Giving Callout</p>
               <h3 className="card-title">Support the work of ministry</h3>
               <p className="card-copy">
-                Give securely to support worship, outreach, missions, and the continued work God is doing through this
-                church family.
+                Give securely to support worship, outreach, ministry care, and the continued work God is doing through
+                this church family.
               </p>
               <Link className="btn" to="/giving">
                 Give Securely
@@ -121,8 +119,8 @@ function Home({ serviceSchedule }) {
             <span className="eyebrow">Ministries Preview</span>
             <h2 className="section-title">Ministries that strengthen every generation</h2>
             <p className="section-copy">
-              From worship and prayer to women’s ministry, family support, and discipleship, our ministries are shaped
-              to help people grow in grace, healing, and purpose.
+              From worship and prayer to discipleship and family support, our ministries help people grow in grace,
+              healing, and purpose.
             </p>
             <div className="grid grid-two">
               <div className="stat-card">
@@ -145,8 +143,7 @@ function Home({ serviceSchedule }) {
             <span className="eyebrow">Plan Your Visit</span>
             <h2 className="section-title">We would love to welcome you in person</h2>
             <p className="section-copy">
-              Join us in Charlotte, North Carolina for worship, fellowship, and a warm church family atmosphere built
-              on faith and compassion.
+              Join us in Charlotte, North Carolina for worship, fellowship, and a warm church family atmosphere.
             </p>
             <ul className="list-clean">
               <li className="schedule-item">

@@ -68,8 +68,8 @@ function LiveStreaming({ serviceSchedule }) {
         <div className="stream-fallback glass-card">
           <h2 className="section-title">Live stream available on Facebook</h2>
           <p className="section-copy">
-            Join Mallard Creek Worship Center on Facebook to watch the live broadcast and view the latest ministry
-            video updates.
+            Join Mallard Creek Worship Center on Facebook to watch the live broadcast and latest ministry video
+            updates.
           </p>
           <a className="btn" href={FACEBOOK_PAGE_URL} target="_blank" rel="noreferrer">
             Watch on Facebook
@@ -158,7 +158,7 @@ function LiveStreaming({ serviceSchedule }) {
             <p className="stream-note">
               {FACEBOOK_LIVE_VIDEO_URL
                 ? 'Facebook direct video playback is enabled using a specific public live video URL.'
-                : 'This page will use Facebook direct playback when a specific public live video URL is configured.'}
+                : 'Add a specific public live video URL anytime you want Facebook direct playback here.'}
             </p>
             <div className="btn-row">
               <a className="btn-secondary" href={FACEBOOK_PAGE_URL} target="_blank" rel="noreferrer">
@@ -181,7 +181,7 @@ function LiveStreaming({ serviceSchedule }) {
             <p className="stream-note">
               {YOUTUBE_CUSTOM_EMBED_URL
                 ? 'A custom YouTube live or latest-sermon embed URL is configured for direct playback.'
-                : 'Update the placeholder YouTube embed variable anytime you want to point this page to a specific live stream or latest sermon.'}
+                : 'Update the YouTube embed placeholder anytime you want this page to point to a specific live stream or recent message.'}
             </p>
             <div className="btn-row">
               <a className="btn-secondary" href={YOUTUBE_CHANNEL_URL} target="_blank" rel="noreferrer">

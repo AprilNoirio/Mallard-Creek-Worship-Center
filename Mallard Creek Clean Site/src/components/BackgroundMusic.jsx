@@ -46,6 +46,7 @@ function BackgroundMusic() {
   const restoreStateRef = useRef(null);
   const isMutedRef = useRef(false);
   const requiresInteractionRef = useRef(false);
+  const hasInteractedRef = useRef(false);
   const [trackIndex, setTrackIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -72,6 +73,7 @@ function BackgroundMusic() {
     const initialMuted = Boolean(saved?.muted);
     const initialMinimized = Boolean(saved?.minimized);
     const initialRequiresInteraction = Boolean(saved?.requiresInteraction);
+    const initialHasInteracted = Boolean(saved?.hasInteracted);
 
     restoreStateRef.current = saved;
     audio.volume = initialVolume;
@@ -82,6 +84,7 @@ function BackgroundMusic() {
     setIsMuted(initialMuted);
     setIsMinimized(initialMinimized);
     setRequiresInteraction(initialRequiresInteraction);
+    hasInteractedRef.current = initialHasInteracted;
 
     const onLoadedMetadata = () => {
       setDuration(audio.duration || 0);
@@ -147,8 +150,9 @@ function BackgroundMusic() {
 
     const tryAutoplay = async () => {
       try {
-        audio.muted = isMutedRef.current || requiresInteractionRef.current;
+        audio.muted = hasInteractedRef.current ? isMutedRef.current : true;
         await audio.play();
+        setRequiresInteraction(!hasInteractedRef.current);
       } catch {
         try {
           audio.muted = true;
@@ -186,7 +190,8 @@ function BackgroundMusic() {
           volume,
           muted: isMuted,
           minimized: isMinimized,
-          requiresInteraction
+          requiresInteraction,
+          hasInteracted: hasInteractedRef.current
         })
       );
     }, 1000);
@@ -202,6 +207,7 @@ function BackgroundMusic() {
     const audio = audioRef.current;
     if (!audio) return;
     try {
+      hasInteractedRef.current = true;
       setRequiresInteraction(false);
       audio.muted = isMutedRef.current;
       await audio.play();
@@ -266,7 +272,7 @@ function BackgroundMusic() {
 
           {requiresInteraction ? (
             <button className="btn music-start music-start-compact" type="button" onClick={play}>
-              Tap to Start Worship Music
+              Tap to Enable Worship Music Sound
             </button>
           ) : null}
         </>
@@ -347,7 +353,7 @@ function BackgroundMusic() {
 
           {requiresInteraction ? (
             <button className="btn music-start" type="button" onClick={play}>
-              Tap to Start Worship Music
+              Tap to Enable Worship Music Sound
             </button>
           ) : null}
         </>
