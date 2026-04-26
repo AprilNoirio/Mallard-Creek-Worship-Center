@@ -1,4 +1,35 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 function Contact({ serviceSchedule }) {
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [submitted, setSubmitted] = useState(false);
+  const saturdayService = serviceSchedule.find((service) => service.name.includes('Saturday'));
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState((current) => ({
+      ...current,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+    setFormState({
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+  };
+
   return (
     <>
       <section className="page-hero">
@@ -9,61 +40,142 @@ function Contact({ serviceSchedule }) {
             <p className="page-copy">
               We would love to welcome you to Mallard Creek Worship Center in Charlotte, North Carolina.
             </p>
+            <p className="section-copy">Reach out with questions, prayer needs, or plans to visit this Saturday.</p>
           </div>
         </div>
       </section>
 
       <section className="section section-compact">
         <div className="container contact-layout">
-          <article className="form-card glass-card">
-            <h2 className="section-title">Plan your visit</h2>
-            <div className="contact-list">
-              <div className="contact-item">
-                <strong>Address</strong>
-                <p className="meta-copy">121 Lawrence Gray Road, Charlotte, NC 28262</p>
+          <article className="form-card glass-card contact-form-card fade-in-up">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="contact-field-group">
+                <label className="contact-label" htmlFor="name">
+                  Name
+                </label>
+                <input
+                  className="contact-input"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formState.name}
+                  onChange={handleChange}
+                  autoComplete="name"
+                  required
+                />
               </div>
-              <div className="contact-item">
-                <strong>Saturday Worship Service</strong>
-                <p className="meta-copy">10:30 AM</p>
+
+              <div className="contact-field-group">
+                <label className="contact-label" htmlFor="email">
+                  Email
+                </label>
+                <input
+                  className="contact-input"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={formState.email}
+                  onChange={handleChange}
+                  autoComplete="email"
+                  required
+                />
               </div>
-              <div className="contact-item">
-                <strong>Conference Call Access</strong>
-                <p className="meta-copy">
-                  Tuesdays and Wednesdays at 5:15 PM
-                  <br />
-                  Phone: (267) 807-9495
-                  <br />
-                  Access Code: 525255027
-                </p>
+
+              <div className="contact-field-group">
+                <label className="contact-label" htmlFor="phone">
+                  Phone
+                </label>
+                <input
+                  className="contact-input"
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="(000) 000-0000"
+                  value={formState.phone}
+                  onChange={handleChange}
+                  autoComplete="tel"
+                />
               </div>
-            </div>
-            <div className="btn-row space-top">
+
+              <div className="contact-field-group">
+                <label className="contact-label" htmlFor="message">
+                  Message
+                </label>
+                <textarea
+                  className="contact-input contact-textarea"
+                  id="message"
+                  name="message"
+                  placeholder="How can we help?"
+                  value={formState.message}
+                  onChange={handleChange}
+                  rows="6"
+                  required
+                />
+              </div>
+
+              <button className="btn contact-submit" type="submit">
+                Send Message
+              </button>
+
+              {submitted ? (
+                <p className="contact-form-confirmation">Thank you. Your message has been received.</p>
+              ) : null}
+            </form>
+          </article>
+
+          <div className="contact-side-column">
+            <article className="info-card glass-card contact-info-card fade-in-up">
+              <p className="card-kicker">Church Information</p>
+              <div className="contact-info-stack">
+                <div>
+                  <strong>Address:</strong>
+                  <p className="section-copy">
+                    121 Lawrence Gray Road
+                    <br />
+                    Charlotte, NC 28262
+                  </p>
+                </div>
+                <div>
+                  <strong>Phone:</strong>
+                  <p className="section-copy">(000) 000-0000</p>
+                </div>
+                <div>
+                  <strong>Email:</strong>
+                  <p className="section-copy">info@mallardcreekworship.org</p>
+                </div>
+              </div>
               <a
-                className="btn"
+                className="btn-secondary"
                 href="https://www.google.com/maps/search/?api=1&query=121+Lawrence+Gray+Road+Charlotte+NC+28262"
                 target="_blank"
                 rel="noreferrer"
               >
-                Open Google Maps
+                Get Directions
               </a>
-            </div>
-          </article>
+            </article>
 
-          <article className="info-card glass-card">
-            <p className="card-kicker">Weekly Gatherings</p>
-            <h2 className="section-title">Connect through worship and study</h2>
-            <ul className="list-clean">
-              {serviceSchedule.map((service) => (
-                <li className="schedule-item" key={service.name}>
-                  <div>
-                    <strong>{service.name}</strong>
-                    <span className="meta-copy">{service.details}</span>
-                  </div>
-                  <span className="gold-text">{service.time}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
+            <article className="info-card glass-card contact-info-card fade-in-up">
+              <p className="card-kicker">Prayer Request Option</p>
+              <p className="section-copy">
+                Submit a confidential prayer request and receive compassionate follow-up from the ministry team.
+              </p>
+              <a className="btn-secondary" href="mailto:info@mallardcreekworship.org?subject=Prayer%20Request">
+                Submit Prayer Request
+              </a>
+            </article>
+
+            <article className="info-card glass-card contact-info-card fade-in-up">
+              <p className="card-kicker">Join Us This Saturday</p>
+              <p className="section-copy">
+                We would love to worship with you this Saturday at {saturdayService?.time || '[SERVICE TIME]'}.
+              </p>
+              <Link className="btn" to="/service-times">
+                Plan Your Visit
+              </Link>
+            </article>
+          </div>
         </div>
       </section>
     </>
