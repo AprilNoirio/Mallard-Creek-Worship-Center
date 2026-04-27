@@ -272,7 +272,7 @@ function BackgroundMusic() {
 
           {requiresInteraction ? (
             <button className="btn music-start music-start-compact" type="button" onClick={play}>
-              Tap to Enable Worship Music Sound
+              Enable Worship Audio
             </button>
           ) : null}
         </>
@@ -353,7 +353,7 @@ function BackgroundMusic() {
 
           {requiresInteraction ? (
             <button className="btn music-start" type="button" onClick={play}>
-              Tap to Enable Worship Music Sound
+              Enable Worship Audio
             </button>
           ) : null}
         </>

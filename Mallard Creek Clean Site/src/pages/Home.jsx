@@ -33,14 +33,16 @@ function Home({ serviceSchedule }) {
           <div className="home-hero-stage glass-card fade-in-up">
             <div className="home-hero-background" />
             <div className="home-hero-overlay" />
+            <div className="hero-microphone-scene" aria-hidden="true">
+              <div className="hero-microphone-glow" />
+              <div className="hero-microphone-head" />
+              <div className="hero-microphone-handle" />
+            </div>
             <div className="home-hero-grid">
               <div className="home-hero-copy">
                 <span className="eyebrow">Welcome Home</span>
                 <h1 className="hero-title">Welcome to Mallard Creek Worship Center</h1>
                 <p className="lead">Worship. Faith. Healing. Transformation.</p>
-                <p className="section-copy">
-                  A place where people encounter God, grow in faith, and find a loving church family.
-                </p>
                 <div className="hero-actions">
                   <Link className="btn" to="/live-streaming">
                     Watch Live
@@ -54,35 +56,24 @@ function Home({ serviceSchedule }) {
                 </div>
               </div>
 
-              <aside className="hero-side-card home-hero-side glass-card fade-in-up">
-                <span className="eyebrow">Saturday Worship</span>
-                <h2 className="section-title">Join Us This Saturday</h2>
-                <p className="hero-highlight-time">Saturday Worship Service at {saturdayService?.time || '10:30 AM'}</p>
-                <p className="section-copy">
-                  Expect heartfelt worship, prayer, biblical teaching, and a church family ready to welcome you with
-                  warmth and joy.
-                </p>
-                <div className="btn-row">
-                  <Link className="btn-secondary" to="/service-times">
-                    View Service Times
-                  </Link>
+              <aside className="home-hero-side fade-in-up">
+                <div className="hero-side-card hero-side-panel glass-card">
+                  <span className="eyebrow">Join Us This Saturday</span>
+                  <h2 className="hero-highlight-time">
+                    Saturday Worship Service at {saturdayService?.time || '10:30 AM'}
+                  </h2>
+                  <p className="section-copy">
+                    Expect powerful worship, biblical teaching, and a loving church family ready to welcome you.
+                  </p>
+                </div>
+
+                <div className="hero-side-card hero-contact-card glass-card">
+                  <span className="eyebrow">Call Us</span>
+                  <a className="hero-contact-link" href={churchContact.phoneHref}>
+                    {churchContact.phoneDisplay}
+                  </a>
                 </div>
               </aside>
-            </div>
-          </div>
-
-          <div className="hero-stat-strip fade-in-up">
-            <div className="hero-stat-card glass-card">
-              <span className="stat-label">Join Us This Saturday</span>
-              <strong>{saturdayService?.time || '10:30 AM'}</strong>
-            </div>
-            <div className="hero-stat-card glass-card">
-              <span className="stat-label">Watch Live</span>
-              <strong>Facebook + YouTube</strong>
-            </div>
-            <div className="hero-stat-card glass-card">
-              <span className="stat-label">Call the Church</span>
-              <a href={churchContact.phoneHref}>{churchContact.phoneDisplay}</a>
             </div>
           </div>
         </div>
