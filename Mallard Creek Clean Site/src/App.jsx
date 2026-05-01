@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BackgroundMusic from './components/BackgroundMusic';
@@ -34,12 +35,27 @@ const serviceSchedule = [
   }
 ];
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
+  }, [location.pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <div className="site-shell">
       <div className="background-orb orb-one" />
       <div className="background-orb orb-two" />
       <div className="background-orb orb-three" />
+      <ScrollToTop />
       <Navbar />
       <main className="page-shell">
         <Routes>
