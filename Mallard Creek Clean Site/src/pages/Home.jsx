@@ -44,13 +44,13 @@ function Home({ serviceSchedule }) {
                 <h1 className="hero-title">Welcome to Mallard Creek Worship Center</h1>
                 <p className="lead">Worship. Faith. Healing. Transformation.</p>
                 <div className="hero-actions">
-                  <Link className="btn" to="/live-streaming">
+                  <Link className="btn hero-btn hero-btn-primary" to="/live-streaming">
                     Watch Live
                   </Link>
-                  <Link className="btn-secondary" to="/contact">
+                  <Link className="btn-secondary hero-btn hero-btn-secondary" to="/contact">
                     Plan Your Visit
                   </Link>
-                  <Link className="btn-ghost" to="/giving">
+                  <Link className="btn-ghost hero-btn hero-btn-ghost" to="/giving">
                     Give Now
                   </Link>
                 </div>
