@@ -35,6 +35,12 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  const scrollPageTop = () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -59,7 +65,10 @@ function Navbar() {
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                  onClick={closeMenu}
+                  onClick={() => {
+                    closeMenu();
+                    scrollPageTop();
+                  }}
                 >
                   {item.label}
                 </NavLink>
@@ -70,11 +79,21 @@ function Navbar() {
               <Link
                 className={`btn-secondary nav-cta-live ${location.pathname === '/live-streaming' ? 'current' : ''}`}
                 to="/live-streaming"
-                onClick={closeMenu}
+                onClick={() => {
+                  closeMenu();
+                  scrollPageTop();
+                }}
               >
                 Watch Live
               </Link>
-              <Link className="btn nav-cta-give" to="/giving" onClick={closeMenu}>
+              <Link
+                className="btn nav-cta-give"
+                to="/giving"
+                onClick={() => {
+                  closeMenu();
+                  scrollPageTop();
+                }}
+              >
                 Give Now
               </Link>
             </div>
@@ -97,7 +116,10 @@ function Navbar() {
                     to={item.to}
                     end={item.to === '/'}
                     className={({ isActive }) => `nav-link nav-mobile-link ${isActive ? 'active' : ''}`}
-                    onClick={closeMenu}
+                    onClick={() => {
+                      closeMenu();
+                      scrollPageTop();
+                    }}
                   >
                     {item.label}
                   </NavLink>
@@ -108,11 +130,21 @@ function Navbar() {
                 <Link
                   className={`btn-secondary nav-cta-live ${location.pathname === '/live-streaming' ? 'current' : ''}`}
                   to="/live-streaming"
-                  onClick={closeMenu}
+                  onClick={() => {
+                    closeMenu();
+                    scrollPageTop();
+                  }}
                 >
                   Watch Live
                 </Link>
-                <Link className="btn nav-cta-give" to="/giving" onClick={closeMenu}>
+                <Link
+                  className="btn nav-cta-give"
+                  to="/giving"
+                  onClick={() => {
+                    closeMenu();
+                    scrollPageTop();
+                  }}
+                >
                   Give Now
                 </Link>
               </div>

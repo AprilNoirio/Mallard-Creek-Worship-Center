@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -38,13 +38,34 @@ const serviceSchedule = [
 function ScrollToTop() {
   const location = useLocation();
 
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   useLayoutEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto'
-    });
-  }, [location.pathname]);
+    const scrollTop = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      const main = document.querySelector('main');
+      if (main) {
+        main.scrollTop = 0;
+      }
+    };
+
+    scrollTop();
+
+    const rafId = window.requestAnimationFrame(scrollTop);
+    const timeoutId = window.setTimeout(scrollTop, 0);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timeoutId);
+    };
+  }, [location.pathname, location.search, location.hash, location.key]);
 
   return null;
 }
