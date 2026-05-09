@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
 
   if (!resendApiKey || !fromEmail) {
-    return res.status(500).json({ error: 'Email service is not configured' });
+    return res.status(503).json({ error: 'Email service is temporarily unavailable' });
   }
 
   const text = [
