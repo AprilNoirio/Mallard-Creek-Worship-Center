@@ -31,18 +31,19 @@ function Home({ serviceSchedule }) {
       <section className="hero hero-homepage hero-rebuild">
         <div className="container">
           <div className="home-hero-stage glass-card fade-in-up">
-            <div className="home-hero-background" />
-            <div className="home-hero-overlay" />
-            <div className="hero-microphone-scene" aria-hidden="true">
-              <div className="hero-microphone-glow" />
-              <div className="hero-microphone-head" />
-              <div className="hero-microphone-handle" />
+            <div className="home-hero-image-wrap">
+              <img
+                className="home-hero-image"
+                src="/assets/welcome-mallard-creek-hero.png"
+                alt="Welcome to Mallard Creek Worship Center"
+              />
             </div>
+            <div className="home-hero-overlay" />
             <div className="home-hero-grid">
-              <div className="home-hero-copy">
+              <div className="home-hero-copy home-hero-copy-panel">
                 <span className="eyebrow">Welcome Home</span>
-                <h1 className="hero-title">Welcome to Mallard Creek Worship Center</h1>
-                <p className="lead">Worship. Faith. Healing. Transformation.</p>
+                <h1 className="hero-title">Mallard Creek Worship Center</h1>
+                <p className="lead">A place to worship, grow, heal, and experience transformation.</p>
                 <div className="hero-actions">
                   <Link className="btn hero-btn hero-btn-primary" to="/live-streaming">
                     Watch Live
@@ -60,18 +61,13 @@ function Home({ serviceSchedule }) {
                 <div className="hero-side-card hero-side-panel glass-card">
                   <span className="eyebrow">Join Us This Saturday</span>
                   <h2 className="hero-highlight-time">
-                    Saturday Worship Service at {saturdayService?.time || '10:30 AM'}
+                    Saturday Worship Service — {saturdayService?.time || '10:30 AM'}
                   </h2>
-                  <p className="section-copy">
-                    Expect powerful worship, biblical teaching, and a loving church family ready to welcome you.
-                  </p>
-                </div>
-
-                <div className="hero-side-card hero-contact-card glass-card">
-                  <span className="eyebrow">Call Us</span>
-                  <a className="hero-contact-link" href={churchContact.phoneHref}>
-                    {churchContact.phoneDisplay}
-                  </a>
+                  <div className="btn-row">
+                    <Link className="btn-secondary hero-btn hero-btn-secondary" to="/contact">
+                      Plan Your Visit
+                    </Link>
+                  </div>
                 </div>
               </aside>
             </div>
@@ -80,28 +76,44 @@ function Home({ serviceSchedule }) {
       </section>
 
       <section className="section section-compact">
-        <div className="container section-split-band">
+        <div className="container hero-preview-grid">
           <article className="feature-card glass-card fade-in-up">
-            <span className="eyebrow">New Here</span>
-            <h2 className="section-title">There is a place for you here</h2>
+            <span className="eyebrow">Watch Live</span>
+            <h2 className="section-title">Join worship from anywhere</h2>
             <p className="section-copy">
-              Whether you are new to faith, returning to church, or looking for a church family, there is a place for
-              you here.
+              Stay connected through Facebook Live and YouTube Live during worship services and special ministry
+              moments.
             </p>
             <div className="btn-row">
-              <Link className="btn" to="/contact">
+              <Link className="btn" to="/live-streaming">
+                Watch Live
+              </Link>
+            </div>
+          </article>
+
+          <article className="feature-card glass-card fade-in-up">
+            <span className="eyebrow">Saturday Worship</span>
+            <h2 className="section-title">Join Us This Saturday</h2>
+            <p className="section-copy">Saturday Worship Service at {saturdayService?.time || '10:30 AM'}</p>
+            <div className="btn-row">
+              <Link className="btn-secondary" to="/contact">
                 Plan Your Visit
               </Link>
             </div>
           </article>
 
           <article className="feature-card glass-card fade-in-up">
-            <span className="eyebrow">Saturday Worship Highlight</span>
-            <h2 className="section-title">Join Us This Saturday</h2>
-            <p className="section-copy">Saturday Worship Service at {saturdayService?.time || '10:30 AM'}</p>
-            <p className="meta-copy">
-              Come ready for worship, biblical teaching, prayer, and a welcoming atmosphere for every generation.
+            <span className="eyebrow">Welcome</span>
+            <h2 className="section-title">There is a place for you here</h2>
+            <p className="section-copy">
+              Whether you are new to faith, returning to church, or looking for a church family, there is a place for
+              you here.
             </p>
+            <div className="btn-row">
+              <Link className="btn-ghost" to="/giving">
+                Give Now
+              </Link>
+            </div>
           </article>
         </div>
       </section>
