@@ -38,9 +38,8 @@ function Home({ serviceSchedule }) {
                 alt="Welcome to Mallard Creek Worship Center"
               />
             </div>
-            <div className="home-hero-overlay" />
             <div className="home-hero-grid">
-              <div className="home-hero-copy home-hero-copy-panel">
+              <div className="home-hero-copy">
                 <span className="eyebrow">Welcome Home</span>
                 <h1 className="hero-title">Mallard Creek Worship Center</h1>
                 <p className="lead">A place to worship, grow, heal, and experience transformation.</p>
@@ -58,7 +57,7 @@ function Home({ serviceSchedule }) {
               </div>
 
               <aside className="home-hero-side fade-in-up">
-                <div className="hero-side-card hero-side-panel glass-card">
+                <div className="hero-side-panel">
                   <span className="eyebrow">Join Us This Saturday</span>
                   <h2 className="hero-highlight-time">
                     Saturday Worship Service — {saturdayService?.time || '10:30 AM'}
