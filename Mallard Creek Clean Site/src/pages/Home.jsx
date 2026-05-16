@@ -30,7 +30,7 @@ function Home({ serviceSchedule }) {
     <>
       <section className="hero hero-homepage hero-rebuild">
         <div className="container">
-          <div className="home-hero-stage glass-card fade-in-up">
+          <div className="home-hero-stage fade-in-up">
             <div className="home-hero-image-wrap">
               <img
                 className="home-hero-image"
@@ -57,7 +57,7 @@ function Home({ serviceSchedule }) {
               </div>
 
               <aside className="home-hero-side fade-in-up">
-                <div className="hero-side-panel">
+                <div className="hero-side-panel glass-card">
                   <span className="eyebrow">Join Us This Saturday</span>
                   <h2 className="hero-highlight-time">
                     Saturday Worship Service — {saturdayService?.time || '10:30 AM'}
